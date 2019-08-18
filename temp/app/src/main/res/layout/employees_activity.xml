@@ -6,9 +6,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".EmployeesActivity">
-
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewEmployees"
+    <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <View
+                    android:id="@+id/header"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp" android:background="#FF9800"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewEmployees"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="LinearLayoutManager"/>
+
+            <View
+                    android:id="@+id/footer"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp" android:background="#8BC34A"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

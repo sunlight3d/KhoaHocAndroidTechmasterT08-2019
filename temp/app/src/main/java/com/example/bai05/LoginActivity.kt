@@ -2,12 +2,7 @@ package com.example.bai05
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
 import com.example.bai05.models.User
 import kotlinx.android.synthetic.main.login_activity.*
 

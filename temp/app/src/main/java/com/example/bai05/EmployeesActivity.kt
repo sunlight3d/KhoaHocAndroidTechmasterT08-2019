@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.employees_activity.*
 
 class EmployeesActivity : AppCompatActivity() {
-//    private lateinit var recyclerViewEmployees: RecyclerView
-
     private lateinit var employeesAdapter: RecyclerView.Adapter<*>
     private lateinit var layoutManager: RecyclerView.LayoutManager
 
@@ -20,16 +18,13 @@ class EmployeesActivity : AppCompatActivity() {
     }
     private fun setupRecyclerView() {
         layoutManager =  LinearLayoutManager(this)
+
         createFakeEmployees()
         employeesAdapter = EmployeeAdapter(employees)
 
-//        recyclerViewEmployees = findViewById<RecyclerView>(R.id.recyclerViewEmployees).apply{
-//            adapter = employeesAdapter
-//            setHasFixedSize(true)
-//            layoutManager = layoutManager2
-//        }
         recyclerViewEmployees.adapter = employeesAdapter
         recyclerViewEmployees.setHasFixedSize(true)
         recyclerViewEmployees.layoutManager = layoutManager
+        nestedScrollView.isEnabled = true
     }
 }
