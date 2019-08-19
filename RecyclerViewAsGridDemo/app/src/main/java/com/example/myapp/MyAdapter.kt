@@ -32,7 +32,12 @@ class MyAdapter(private val persons: ArrayList<Person>):
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as PersonItemView).person = this.persons[position]
-        holder.view.setBackgroundColor(Color.GREEN)
+        if(position % 2 == 0) {
+            holder.view.setBackgroundColor(Color.GREEN)
+        }else {
+            holder.view.setBackgroundColor(Color.RED)
+        }
+
     }
 
     override fun getItemCount(): Int {

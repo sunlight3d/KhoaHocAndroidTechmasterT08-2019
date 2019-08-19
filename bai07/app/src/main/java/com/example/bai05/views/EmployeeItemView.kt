@@ -14,7 +14,7 @@ class EmployeeItemView(val view: View):
                         this.view.txtEmail.text = value?.name
                         this.view.txtAddress.text = value?.address
                         val uri = Uri.parse(value?.urlAvatar)
-//                        this.view.imageViewAvatar.setImageURI(uri)
+                        this.view.imageViewAvatar.setImageURI(uri)
                         this.view.setOnClickListener { println("click = ${value?.name}") }
                         field = value
                 }
