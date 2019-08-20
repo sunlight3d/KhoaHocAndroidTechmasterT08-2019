@@ -15,16 +15,29 @@ class MainActivity : AppCompatActivity()  {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-        val url = "https://jsonplaceholder.typicode.com/posts/1/comments"
+        //val url = "https://jsonplaceholder.typicode.com/posts/1/comments"
+        val url ="http://apiedu.bentic.com/api/configuration/public"
         GET(url, object: Callback {
             //anonymous class
             override fun onResponse(call: Call?, response: Response) {
-                var code = response.code()
+                if(response.code() != 200) {
+                    return
+                }
                 val responseData = response.body()?.string()
                 runOnUiThread{
                     try {
-                        var comments = JSONArray(responseData)
+                        //var comments = JSONArray(responseData)
                         var json = JSONObject(responseData)
+                        val code = json.getInt("code")
+                        if(code == 0) {
+                            val comments = json.getJSONArray("data")
+                            for(i in 0..comments.length()) {
+                                val comment = comments.get(i)
+                                println("dd")
+                            }
+                            println("ddd")
+                        }
+
                         println("Request Successful!!")
                         println(json)
 //                        val responseObject = json.getJSONObject("response")
