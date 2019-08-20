@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity()  {
         GET(url, object: Callback {
             //anonymous class
             override fun onResponse(call: Call?, response: Response) {
+                var code = response.code()
                 val responseData = response.body()?.string()
                 runOnUiThread{
                     try {

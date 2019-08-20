@@ -2,7 +2,7 @@ package com.example.myapp
 
 import okhttp3.*
 
-var client = OkHttpClient()
+val client = OkHttpClient()
 val JSON = MediaType.parse("application/json; charset=utf-8")
 
 fun GET(url: String, callback: Callback): Call {

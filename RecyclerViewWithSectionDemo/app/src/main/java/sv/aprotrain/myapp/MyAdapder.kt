@@ -35,10 +35,11 @@ fun convertSectionsToArray(sections: MutableMap<String, ArrayList<Person>>): Arr
 }
 
 class MyAdapter(private val dataList: ArrayList<Any>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    //calculate viewType
     override fun getItemViewType(position: Int): Int {
-        return position
+        return position //viewType = position(0,1,2....)
     }
-
+    //ListItem lay giao dien tu dau ?
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if(this.dataList[viewType] is String) {
             val view = LayoutInflater.from(parent.context)
@@ -52,6 +53,7 @@ class MyAdapter(private val dataList: ArrayList<Any>): RecyclerView.Adapter<Recy
             return PersonItemView(view)
         }
     }
+    //Noi dung cua ListItem la gi?
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if(this.dataList[position] is String) {
             (holder as HeaderItemView).strHeader = this.dataList[position] as String
@@ -59,7 +61,7 @@ class MyAdapter(private val dataList: ArrayList<Any>): RecyclerView.Adapter<Recy
             (holder as PersonItemView).person = this.dataList[position] as Person
         }
     }
-
+    //Co may Item ?
     override fun getItemCount(): Int {
         return this.dataList.size
     }

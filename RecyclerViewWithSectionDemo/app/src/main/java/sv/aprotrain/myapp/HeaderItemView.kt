@@ -1,5 +1,6 @@
 package sv.aprotrain.myapp
 
+import android.graphics.Color
 import android.net.Uri
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +12,8 @@ class HeaderItemView(val view: View):
         set(value) {
             println("update UI")
             this.view.txtHeader.text = value
+            this.view.txtHeader.setTextColor(Color.RED)
+            this.view.setBackgroundColor(Color.GREEN)
             field = value
         }
 

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 var persons:ArrayList<Person> = ArrayList()
 fun generatePersons() {
+    persons.clear()
     persons.add(Person("AAa", 18))
     persons.add(Person("BBB", 19))
     persons.add(Person("CCC", 20))
