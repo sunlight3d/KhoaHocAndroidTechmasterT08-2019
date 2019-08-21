@@ -15,7 +15,8 @@ class FragmentB : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            it.getString("paramX")
+            var name = it.getString("name")
+            println(name)
         }
     }
 

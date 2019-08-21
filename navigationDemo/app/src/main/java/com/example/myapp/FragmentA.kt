@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.NavHostFragment.findNavController
 
 class FragmentA : Fragment() {
@@ -27,7 +28,7 @@ class FragmentA : Fragment() {
         btnNavigate = view.findViewById(R.id.btnNavigate)
         btnNavigate.setOnClickListener { v -> run{
             val nav = findNavController(this@FragmentA)
-            nav.navigate(R.id.action_fragmentA_to_fragmentB)
+            nav.navigate(R.id.action_fragmentA_to_fragmentB, bundleOf("name" to "Hoang"))
         } }
         return view
     }
