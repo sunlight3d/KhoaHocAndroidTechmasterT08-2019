@@ -9,5 +9,5 @@
         <action android:id="@+id/action_fragmentA_to_fragmentB" app:destination="@id/fragmentB"/>
     </fragment>
     <fragment android:id="@+id/fragmentB" android:name="com.example.myapp.FragmentB" android:label="fragment_b"
-              tools:layout="@layout/fragment_a"/>
+              tools:layout="@layout/fragment_b"/>
 </navigation>
