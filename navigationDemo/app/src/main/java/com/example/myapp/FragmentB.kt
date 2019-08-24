@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.NavHostFragment
+import kotlinx.android.synthetic.main.fragment_b.view.*
 
 
 class FragmentB : Fragment() {
@@ -18,14 +21,21 @@ class FragmentB : Fragment() {
             var name = it.getString("name")
             println(name)
         }
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_b, container, false)
+        val view = inflater.inflate(R.layout.fragment_b, container, false)
+        view.btnDismiss.setOnClickListener{ v -> run{
+            val nav = NavHostFragment.findNavController(this@FragmentB)
+            nav.navigateUp()
+
+
+        } }
+        return view
     }
 
     override fun onAttach(context: Context) {

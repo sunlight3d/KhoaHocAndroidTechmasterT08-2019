@@ -8,13 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.NavHostFragment.findNavController
+import kotlinx.android.synthetic.main.fragment_a.*
+import kotlinx.android.synthetic.main.fragment_a.view.*
 
 class FragmentA : Fragment() {
 
     private var listener: OnFragmentInteractionListener? = null
-    private lateinit var btnNavigate: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState) //2
     }
@@ -25,8 +27,7 @@ class FragmentA : Fragment() {
     ): View? {
         //3
         val view = inflater.inflate(R.layout.fragment_a, container, false)
-        btnNavigate = view.findViewById(R.id.btnNavigate)
-        btnNavigate.setOnClickListener { v -> run{
+        view.btnNavigate.setOnClickListener { v -> run{
             val nav = findNavController(this@FragmentA)
             nav.navigate(R.id.action_fragmentA_to_fragmentB, bundleOf("name" to "Hoang"))
         } }
