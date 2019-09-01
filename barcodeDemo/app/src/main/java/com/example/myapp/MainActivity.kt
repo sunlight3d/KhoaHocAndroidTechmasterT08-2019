@@ -35,16 +35,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btnSelect.setOnClickListener { showPictureDialog() }
-        /*
-        btnDetech.setOnClickListener {
-            cameraView.captureImage { cameraKitView, byteArray ->
-                cameraView.onStop()
-                var bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray?.size ?: 0)
-                bitmap = Bitmap.createScaledBitmap(bitmap, cameraView?.width ?: 0, cameraView?.height ?: 0, false)
-                runDetector(bitmap)
-            }
-        }
-        */
     }
 
     private fun showPictureDialog() {
