@@ -1,5 +1,7 @@
 # Compiled class file
 *.class
+node_modules
+node_modules/
 videos
 videos/
 .DS_Store
