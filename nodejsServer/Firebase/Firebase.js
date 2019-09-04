@@ -19,7 +19,7 @@ class FirebaseManager {
         this.database = firebase.database()
         this.authentication = firebase.auth()
     }
-    insertSomething = (timestamp) => {
+    insertSomething(timestamp) {
         this.database.ref('timestamps').set({
             timestamp
         })
