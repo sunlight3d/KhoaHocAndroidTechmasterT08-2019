@@ -90,16 +90,13 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    public override fun onActivityResult(requestCode:Int, resultCode:Int, data: Intent?) {
+    public override fun onActivityResult(requestCode:Int,
+                                         resultCode:Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        /* if (resultCode == this.RESULT_CANCELED)
-         {
-         return
-         }*/
-        if (requestCode == GALLERY)
-        {
+        if (requestCode == GALLERY) {
             if (data != null) {
                 val contentURI = data!!.data
+//                contentURI.path
                 try {
                     val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
                     Toast.makeText(this@MainActivity, "Image Saved!", Toast.LENGTH_SHORT).show()
