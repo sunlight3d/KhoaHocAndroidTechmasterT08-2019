@@ -14,7 +14,7 @@ import retrofit2.http.POST
 import retrofit2.http.Part
 import java.io.File
 
-private val BASE_URL = "http://127.0.0.1:3000"
+private val BASE_URL = "http://Nguyens-iMac:3000"
 private val okHttpClient = OkHttpClient.Builder().build()
 public val retrofit:Retrofit = Retrofit.Builder().baseUrl(BASE_URL)
                         .client(okHttpClient)
@@ -35,11 +35,12 @@ fun uploadToServer(filePath: String) {
     val call = uploadAPIs.uploadImage(part, requestBody)
     call.enqueue(object : Callback<ResponseBody> {
         override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
-            Log.v("retrofit", "call failed")
+            println("failed")
         }
 
         override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
             //data.value = response!!.body()!!.articles
+            println("success")
         }
     })
 }

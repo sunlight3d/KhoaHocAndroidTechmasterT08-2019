@@ -3,6 +3,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.media.MediaScannerConnection
 import android.os.Environment
@@ -19,6 +20,17 @@ import java.io.IOException
 import java.util.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.app.ComponentActivity
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.net.Uri
+
+
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -55,7 +67,6 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(intent, CAMERA)
     }
 
-
     public override fun onActivityResult(requestCode:Int,
                                          resultCode:Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -65,7 +76,13 @@ class MainActivity : AppCompatActivity() {
 //                contentURI.path
                 try {
                     val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
-                    uploadToServer(contentURI.path)
+                    val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
+                    var cursor = contentResolver.query(contentURI!!, filePathColumn,null, null)
+                    assert(cursor != null)
+                    cursor!!.moveToFirst()
+                    val columnIndex = cursor.getColumnIndex(filePathColumn[0])
+                    var mediaPath = cursor.getString(columnIndex)
+                    uploadToServer(mediaPath)
                     Toast.makeText(this@MainActivity, "Image uploaded!", Toast.LENGTH_SHORT).show()
                     imageView!!.setImageBitmap(bitmap)
                 }
