@@ -14,7 +14,7 @@ import retrofit2.http.POST
 import retrofit2.http.Part
 import java.io.File
 
-private const val BASE_URL = "http://Nguyens-iMac:3000"
+private const val BASE_URL = "http://192.168.1.155:3000"
 private val okHttpClient = OkHttpClient.Builder().build()
 val retrofit:Retrofit = Retrofit.Builder().baseUrl(BASE_URL)
                         .client(okHttpClient)
@@ -31,6 +31,7 @@ interface UploadAPIs {
 
 }
 fun uploadToServer(filePath: String) {
+
     val uploadAPIs = retrofit.create(UploadAPIs::class.java)
     val file = File(filePath)
     val fileReqBody = RequestBody.create(
@@ -39,6 +40,7 @@ fun uploadToServer(filePath: String) {
             file.name, fileReqBody)
     val requestBody = RequestBody.
             create(MediaType.parse("text/plain"), "image-type")
+
     val call = uploadAPIs.uploadImage(part, requestBody)
 
     call.enqueue(object : Callback<ResponseBody> {
