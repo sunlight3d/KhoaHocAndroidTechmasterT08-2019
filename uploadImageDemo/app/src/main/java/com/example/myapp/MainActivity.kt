@@ -77,11 +77,13 @@ class MainActivity : AppCompatActivity() {
                 try {
                     val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
                     val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
-                    var cursor = contentResolver.query(contentURI!!, filePathColumn,null, null)
+                    var cursor = contentResolver.query(contentURI!!, filePathColumn,
+                        null, null)
                     assert(cursor != null)
                     cursor!!.moveToFirst()
                     val columnIndex = cursor.getColumnIndex(filePathColumn[0])
                     var mediaPath = cursor.getString(columnIndex)
+
                     uploadToServer(mediaPath)
                     Toast.makeText(this@MainActivity, "Image uploaded!", Toast.LENGTH_SHORT).show()
                     imageView!!.setImageBitmap(bitmap)
