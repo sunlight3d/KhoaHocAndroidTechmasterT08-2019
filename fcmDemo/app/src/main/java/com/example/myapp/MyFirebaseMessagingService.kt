@@ -12,7 +12,7 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.google.firebase.quickstart.fcm.R
+//import com.google.firebase.quickstart.fcm.R
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
 
@@ -110,17 +110,19 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
      *
      * @param messageBody FCM message body received.
      */
+
     private fun sendNotification(messageBody: String) {
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
             PendingIntent.FLAG_ONE_SHOT)
 
-        val channelId = getString(R.string.default_notification_channel_id)
+        //val channelId = getString(R.string.fcm_fallback_notification_channel_label)
+        val channelId = "xyzabc"
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.drawable.ic_stat_ic_notification)
-            .setContentTitle(getString(R.string.fcm_message))
+            .setSmallIcon(R.drawable.ic_launcher_background)
+            .setContentTitle("Chao ban ")
             .setContentText(messageBody)
             .setAutoCancel(true)
             .setSound(defaultSoundUri)
